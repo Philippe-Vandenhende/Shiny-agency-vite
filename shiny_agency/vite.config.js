@@ -7,5 +7,9 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'jsdom',
+    setupFiles: 'src/utils/test/setup.js',
+    env: {
+      IS_REACT_ACT_ENVIRONMENT: 'true',
+    }
   },
 })

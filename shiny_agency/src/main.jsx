@@ -10,6 +10,7 @@ import Results from './pages/Results';
 import { SurveyProvider, ThemeProvider } from './utils/context';
 import Footer from './components/Footer';
 import GlobalStyle from './utils/style/GlobalStyle';
+import ProfileContainer from './components/ProfileContainer';
 
 
 
@@ -25,6 +26,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route path='/survey/:questionNumber' element={<Survey />} />
           <Route path='/results' element={<Results />} />
           <Route path='/Freelances' element={<Freelances />} />
+          <Route path='/profile/:id' element={<ProfileContainer />} />
           <Route path='*' element={<Error />} />
         </Routes>
         </SurveyProvider>
