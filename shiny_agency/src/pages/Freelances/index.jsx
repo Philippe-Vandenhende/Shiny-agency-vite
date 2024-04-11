@@ -60,6 +60,7 @@ function Freelances() {
         <CardsContainer>
           {freelancersList?.map((profile, index) => (
             <Card
+              theme={theme}
               key={`${profile.name}-${index}`}
               label={profile.job}
               title={profile.name}

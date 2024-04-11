@@ -93,13 +93,13 @@ function Survey() {
                 <QuestionContent>{surveyData[questionNumber]}  </QuestionContent>                
                 <ReplyWrapper>
                   <ReplyBox
-                    onClick={() => saveReply("true")}
+                    onClick={() => saveReply(true)}
                     isSelected= {answers[questionNumber] === true}
                   >
                     Oui
                   </ReplyBox>
                   <ReplyBox
-                    onClick={() => saveReply("false")}
+                    onClick={() => saveReply(false)}
                     isSelected= {answers[questionNumber] === false}
                   >
                     Non

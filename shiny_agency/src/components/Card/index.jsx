@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { useTheme } from '../../utils/hooks';
 import colors from "../../utils/style/colors";
 import { useState } from "react";
+import { Component } from "react";
 
 const CardWrapper = styled.div`
     display: flex;
@@ -45,7 +46,7 @@ const CardImage = styled.img`
     border-radius: 50%;
 `
 
-export function Card({ label, title, picture }) {
+/*export function Card({ label, title, picture }) {
     const { theme } = useTheme()
     const [isFavorite, setIsFavorite] = useState(false)
     const star = isFavorite ? '⭐️' : ''
@@ -60,6 +61,33 @@ export function Card({ label, title, picture }) {
       </CardWrapper>
     )
   }
+*/
+class Card extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      isFavorite: false,
+    }
+  }
+
+  setFavorite = () => {
+    this.setState({ isFavorite: !this.state.isFavorite})
+  }
+
+  render() {
+    const { isFavorite } = this.state;
+    const star = isFavorite ? '⭐️' : '';
+    const { theme, picture, label, title } = this.props;
+
+    return (
+      <CardWrapper theme={theme} onClick={this.setFavorite}>
+        <CardLabel theme={theme}>{label}</CardLabel>
+        <CardImage src={picture} alt="freelance" />
+        <CardTitle theme={theme}>{star} {title} {star}</CardTitle>
+      </CardWrapper>
+    )
+  }
+}
 
 Card.propTypes = {
     label: PropTypes.string.isRequired,
@@ -73,5 +101,8 @@ Card.defaultProps = {
     picture: DefaultPicture,
 
 }
+
+
+
 
 export default Card;

@@ -5,6 +5,8 @@ import colors from '../../utils/style/colors'
 import { useFetch } from '../../utils/hooks'
 import { StyledLink, Loader } from '../../utils/style/Atoms'
 import { ThemeContext } from '../../utils/context/contexts'
+import EmptyList from '../../components/EmptyList'
+import { ThemeProvider } from '../../utils/context'
 
 const ResultsContainer = styled.div`
   display: flex;
@@ -66,9 +68,9 @@ export function formatFetchParams(answers) {
 export function formatJobList(title, ListLength, index) {
   if (index === ListLength - 1) {
     return title
-  };
+  }
   return `${title},`;
-};
+}
 
 function Results() {
   const { theme } = useContext(ThemeContext)
@@ -84,6 +86,12 @@ function Results() {
   }
 
   const resultsData = data?.resultsData
+
+  if (resultsData?.length < 1) {
+    return (
+        <EmptyList theme={theme} />
+    )
+  }
 
   return isLoading ? (
     <LoaderWrapper>
